@@ -7,3 +7,22 @@
     margin: 0px;
 
 }
+/* App.css */
+body {
+    font-family: 'Inter', sans-serif;
+  }
+  
+  nav {
+    width: 16rem;
+    transition: width 0.3s ease;
+  }
+  
+  .content {
+    padding: 2rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .bg-gradient-to-r {
+    background: linear-gradient(to right, #4c51bf, #6b46c1, #4c51bf);
+  }
+  

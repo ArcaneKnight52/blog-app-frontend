@@ -1,54 +1,45 @@
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
+
+const SidebarItem = ({ to, label }) => (
+  <li>
+    <Link 
+      to={to} 
+      className="block p-4 hover:bg-purple-600 text-white rounded transition duration-200"
+    >
+      {label}
+    </Link>
+  </li>
+);
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(true);
-  const toggleSidebar = () => {
-    setIsOpen(!isOpen);
-  }
-    return (
-      <div className={`h-screen ${isOpen ? 'w-56' : 'w-0'} overflow-hidden transition-width duration-150 bg-gray-800 text-white flex flex-col`}>
-      <div className="flex justify-between items-center p-4">
+  const toggleSidebar = () => setIsOpen(!isOpen);
+
+  return (
+    <nav className={`h-screen ${isOpen ? 'w-56' : 'w-16'} overflow-hidden transition-width duration-150 bg-indigo-800 text-white flex flex-col shadow-lg`}>
+      <div className="flex justify-between items-center p-4 bg-indigo-900">
         {isOpen && <h1 className="text-2xl font-bold">Sidebar</h1>}
-        <button onClick={toggleSidebar} className="text-white ">
-          {isOpen ? '✖' : '☰'} 
+        <button
+          onClick={toggleSidebar}
+          className="text-white"
+          aria-label={isOpen ? 'Close sidebar' : 'Open sidebar'}
+        >
+          {isOpen ? '✖' : '☰'}
         </button>
       </div>
       {isOpen && (
         <ul className="flex flex-col space-y-2">
-  <li>
-    <Link 
-      to="/" 
-      className="block p-4  hover:bg-gray-600 text-white rounded transition duration-200">
-      Home
-    </Link>
-  </li>
-  <li>
-    <Link 
-      to="/settings" 
-      className="block p-4  hover:bg-gray-600 text-white rounded transition duration-200">
-      Settings
-    </Link>
-  </li>
-  <li>
-    <Link 
-      to="/profile" 
-      className="block p-4  hover:bg-gray-600 text-white rounded transition duration-300">
-      Profile
-    </Link>
-  </li>
-</ul>
+          <SidebarItem to="/" label="Home" />
+          <SidebarItem to="/profile" label="Profile" />
+          <SidebarItem to="/my-blogs" label="My Blogs" />
+          <SidebarItem to="/settings" label="Settings" />
+          <SidebarItem to="/about" label="About" />
+          <SidebarItem to="/contact" label="Contact" />
+        </ul>
+      )}
+    </nav>
+  );
+};
 
-      )}
-      {!isOpen && (
-        <button 
-          onClick={toggleSidebar} 
-          className="fixed h-10 pt-2 bg-gray-800 text-white p-2 rounded shadow">
-          ☰
-        </button>
-      )}
-    </div>
-    );
-  };
-  
-  export default Sidebar;
+export default Sidebar;
