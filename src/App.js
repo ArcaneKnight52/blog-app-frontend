@@ -1,6 +1,7 @@
-import './App.css';
-import Sidebar from './components/Sidebar';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
+import Sidebar from './components/Sidebar';
+
 import Home from './pages/Home';
 import Profile from './pages/Profile';
 import MyBlogs from './pages/MyBlogs';
@@ -10,10 +11,10 @@ import Contact from './pages/Contact';
 import NewBlog from './pages/NewBlog';
 import BlogDetails from './pages/BlogDetails';
 
-function App() {
+export default function App() {
   return (
     <Router>
-      <div className="App flex flex-row h-screen">
+      <div className="App flex  h-screen">
         <Sidebar />
         <div className="content flex-1 bg-gray-100 text-gray-900 p-6">
           <Routes>
@@ -32,4 +33,3 @@ function App() {
   );
 }
 
-export default App;
