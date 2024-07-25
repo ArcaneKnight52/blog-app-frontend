@@ -1,33 +1,29 @@
-import { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 const MyBlogs = () => {
-  const [blogs, setBlogs] = useState([]);
-
-  useEffect(() => {
-    // Fetch blogs from local storage or mock data
-    const storedBlogs = JSON.parse(localStorage.getItem('blogs')) || [];
-    setBlogs(storedBlogs);
-  }, []);
-
-  const deleteBlog = (id) => {
-    const updatedBlogs = blogs.filter(blog => blog.id !== id);
-    setBlogs(updatedBlogs);
-    localStorage.setItem('blogs', JSON.stringify(updatedBlogs));
-  };
+  // Dummy blog data for illustration
+  const blogs = [
+    { id: '1', title: 'Blog 1', content: 'Content for blog 1' },
+    { id: '2', title: 'Blog 2', content: 'Content for blog 2' },
+  ];
 
   return (
     <div>
-      <h1 className="text-4xl font-bold mb-6">My Blogs</h1>
-      <Link to="/new" className="bg-blue-500 text-white px-4 py-2 rounded">Create New Blog</Link>
-      <ul className="mt-6 space-y-4">
-        {blogs.map(blog => (
-          <li key={blog.id} className="p-4 bg-white shadow-md rounded-lg flex justify-between items-center">
-            <Link to={`/blogs/${blog.id}`} className="text-2xl text-indigo-700 font-semibold hover:underline">{blog.title}</Link>
-            <button onClick={() => deleteBlog(blog.id)} className="bg-red-500 text-white px-4 py-2 rounded">Delete</button>
-          </li>
-        ))}
-      </ul>
+      <h1 className="text-2xl font-bold mb-4">My Blogs</h1>
+      <Link to="/new" className="bg-blue-500 text-white p-2 rounded mb-4 inline-block">
+        Create New Blog
+      </Link>
+      {blogs.map(blog => (
+        <div key={blog.id} className="border p-4 mb-2">
+          <h2 className="text-xl font-bold">{blog.title}</h2>
+          <p>{blog.content}</p>
+          <Link to={`/blogs/${blog.id}`} className="bg-yellow-500 text-white p-2 rounded mr-2">
+            View
+          </Link>
+          {/* Add edit and delete functionality as needed */}
+        </div>
+      ))}
     </div>
   );
 };

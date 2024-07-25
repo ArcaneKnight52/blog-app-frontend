@@ -1,26 +1,18 @@
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
 
 const Home = () => {
-  const [blogs, setBlogs] = useState([]);
-
-  useEffect(() => {
-    // Fetch blogs from local storage or mock data
-    const storedBlogs = JSON.parse(localStorage.getItem('blogs')) || [];
-    setBlogs(storedBlogs);
-  }, []);
-
   return (
-    <div>
-      <h1 className="text-4xl font-bold mb-6">Home</h1>
-      <Link to="/new" className="bg-blue-500 text-white px-4 py-2 rounded">Create New Blog</Link>
-      <ul className="mt-6 space-y-4">
-        {blogs.map(blog => (
-          <li key={blog.id} className="p-4 bg-white shadow-md rounded-lg">
-            <Link to={`/blogs/${blog.id}`} className="text-2xl text-indigo-700 font-semibold hover:underline">{blog.title}</Link>
-          </li>
-        ))}
-      </ul>
+    <div className="p-4">
+      <h1 className="text-3xl font-bold mb-4">Welcome to DEATH NOTE</h1>
+      <p className="mb-4">Manage your blogs efficiently with our intuitive interface. Explore the features and start creating, viewing, and managing your content.</p>
+      <div className="bg-white shadow-md rounded-lg p-6">
+        <h2 className="text-2xl font-semibold mb-2">Features:</h2>
+        <ul className="list-disc list-inside">
+          <li>Easy creation of new blogs</li>
+          <li>View and edit existing blogs</li>
+          <li>Delete blogs with a single click</li>
+        </ul>
+      </div>
     </div>
   );
 };

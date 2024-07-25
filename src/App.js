@@ -1,7 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-
 import Sidebar from './components/Sidebar';
-
 import Home from './pages/Home';
 import Profile from './pages/Profile';
 import MyBlogs from './pages/MyBlogs';
@@ -10,11 +8,12 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import NewBlog from './pages/NewBlog';
 import BlogDetails from './pages/BlogDetails';
+import NotFound from './pages/NotFound';
 
 export default function App() {
   return (
     <Router>
-      <div className="App flex  h-screen">
+      <div className="App flex h-screen">
         <Sidebar />
         <div className="content flex-1 bg-gray-100 text-gray-900 p-6">
           <Routes>
@@ -26,10 +25,10 @@ export default function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/new" element={<NewBlog />} />
             <Route path="/blogs/:id" element={<BlogDetails />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
       </div>
     </Router>
   );
 }
-
